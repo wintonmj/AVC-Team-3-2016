@@ -1,5 +1,5 @@
-# include < stdio.h > 
-# include < time.h > 
+# include <stdio.h> 
+# include <time.h> 
 
 \\ these load specific methods from the ENGR101 library 
 extern "C" int InitHardware (); 
