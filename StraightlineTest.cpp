@@ -10,6 +10,7 @@ int main (){
 
    // This sets up the RPi hardware and ensures
    // everything is working correctly
+   // Value of 1 means debugging information is displayed
    init(1);
 
    // Sets the motor connected to pin 1 to rotate
@@ -21,6 +22,8 @@ int main (){
    set_motor(2, 255); // pin 2 = left hand motor (green and yellow wires)
    Sleep(1 ,000000);
 
+   // Stops the motors from running
    set_motor(1,0);
    set_motor(2,0);
+   
 return 0;}
