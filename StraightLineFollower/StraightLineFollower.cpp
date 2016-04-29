@@ -20,14 +20,12 @@ int main() {
 	int zeroCentre[] = {-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8};
     int n_whites = 0;
     double error = 0.0; // Define later
-
-/*	int lineStart;
-	int lineEnd;
-    double lineCentre;
+    int correctingSpeed = 3; ///////
+    int speed = 40;
     double arrayCentre = (ntp - 1)/2;
-    double v_left = 128 + (k*(lineCentre-arrayCentre));
-	double v_right = 128 - (k*(lineCentre-arrayCentre));
-*/
+    double v_left = speed + (error*(correctingSpeed));  ///////
+	double v_right = speed - (error*(correctingSpeed));     /////////
+
 
 	while (1) {
 
@@ -58,9 +56,17 @@ int main() {
             error = error/((double)n_whites);
             Sleep(0,100000);
             printf("\n");
+
+            v_left = speed + (error*(correctingSpeed));   ///////
+            v_right = speed - (error*(correctingSpeed)); ////////
         }
         else {
             printf("No line detected\n");
+            v_left = -speed;   ///////
+            v_right = -speed; ////////
         }
+           set_motor(1,v_left);
+           set_motor(2,v_right);
+
 	}
 }
