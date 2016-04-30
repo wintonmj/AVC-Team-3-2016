@@ -10,7 +10,7 @@ extern "C" int Sleep(int sec, int usec);
 extern "C" int set_motor(int motor , int speed );
 
 int main() {
-	init(0); // Set to 1 for debugging, 0 otherwise.
+init(0); // Set to 1 for debugging, 0 otherwise.
 	
 	// Variables
 	int width = 320;
