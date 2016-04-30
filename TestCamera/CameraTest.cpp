@@ -15,7 +15,7 @@ int main(){
     while(true){
        //Take picture with camera
        take_picture();
-       //get pixel "whit eness" from centre of image (160x120)
+       //get pixel "whiteness" from centre of image (160x120)
        c = get_pixel(160,120,3);
        //Prints read pixel value 
        printf("%d\n",c); 
