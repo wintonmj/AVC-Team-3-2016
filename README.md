@@ -25,3 +25,13 @@
  * Grace: Check on whats been done, help out with software and hardware working with quadrant 1 & 2.
  * Chris & Michael: Test out the code from 1st and second week, have gate opening and get robot following the line smoothly (maybe the derivative PID control system) before the 'B-' stage. Also think about a method for the robot to deal with T-junctions/90 degree turns etc.
  * Aaron & Mayunk: Have a good idea for a finalised chassis for up to the maze (flip the camera, add on the wheel etc). Also look at 3D modelling/printing a ball following wheel.
+ 
+
+*Weekly Checklist*
+ * Have we discussed what needs to be done for the following week?
+ * Is everything from this week done?
+ * What tasks we need to do first when we get into the lab?
+ * Have we updated code and photos on github?
+ * If you havent done everything that is needed ask for help from other members of the team.
+ 
+
