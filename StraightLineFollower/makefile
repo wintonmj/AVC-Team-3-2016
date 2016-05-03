@@ -1,2 +1,2 @@
-StraightLineFollower: StraightLineFollower.cpp
-	gcc -L/usr/lib -Wall -o StraightLineFollower StraightLineFollower.cpp -lE101 -lrt
+SLF: SLF.cpp
+	gcc -L/usr/lib -Wall -o SLF SLF.cpp -lE101 -lrt
