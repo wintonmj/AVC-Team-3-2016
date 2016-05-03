@@ -27,7 +27,7 @@
  * Aaron & Mayunk: Have a good idea for a finalised chassis for up to the maze (flip the camera, add on the wheel etc). Also look at 3D modelling/printing a ball following wheel.
  
 
-*Weekly Checklist*
+**Weekly Checklist**
  * Have we discussed what needs to be done for the following week?
  * Is everything from this week done?
  * What tasks we need to do first when we get into the lab?
