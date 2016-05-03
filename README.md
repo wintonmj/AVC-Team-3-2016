@@ -7,7 +7,7 @@
 - [x] Aaron & Mayunk: assemble the chasis.
   
 *Everyone has done there jobs for this week*
-*We have set goals for the next week ([Week 2 Checklist](#Week-2-Checklist))
+*We have set goals for the next week ([Week 2 Checklist](#Week-2-checklist))
   
   
 
@@ -19,7 +19,7 @@
 
 *As half were away for holidays, Chris and Michael were able to work on code for quadrant 2, but unable to test it as we werent able to actually work on it in the lab. Quadrant 1 is unfinished.*
 *Chassis is not finalised.*
-*We have made goals for week 3 ([Week 3 Checklist](#Week-3-Checklist))
+*We have made goals for week 3 ([Week 3 Checklist](#Week-3-checklist))
 
 **Week 3 Checklist**
 - [ ] Grace: Check on whats been done, help out with software and hardware working with quadrant 1 & 2.
@@ -36,9 +36,9 @@
  
 | Week | Team Goals | Whats Due | Other Commitments | Checklists |
 | :----| :--------: | --------: | ----------------: | ---------: |
-| 1    | Robot moving forward | AVC Plan | PHYS122 test | [Week 1 Checklist](#Week-1-Checklist) |
-| 2    | Discuss issues |  | Some home for holidays | [Week 2 Checklist](#Week-2-Checklist) |
-| 3    | Have quadrant 1 DONE |  |  | [Week 3 Checklist](#Week-3-Checklist) |
+| 1    | Robot moving forward | AVC Plan | PHYS122 test | [Week 1 Checklist](#Week-1-checklist) |
+| 2    | Discuss issues |  | Some home for holidays | [Week 2 Checklist](#Week-2-checklist) |
+| 3    | Have quadrant 1 DONE |  |  | [Week 3 Checklist](#Week-3-checklist) |
 | 4    | Have quadrant 2 DONE |  | COMP102 test  |   |
 | 5    | Have quadrant 3 DONE by end of week 5 | Progress Report | ENGR121 test |  |
 | 6    | Have quadrant 4 DONE by end of week 6 |  |  |  |
