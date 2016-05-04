@@ -1,10 +1,10 @@
 # AVC-Team-3-2016
 
-###Due Dates:
- *AVC Plan: Week 1 (Wed 20th April)
- *AVC Progress Report: Week 5 (Mon 16th May)*same paragraph*
- *Robot: Week 7 (Mon 30th May)
- *Final Report: Week 9 (Mon 13th June)
+###Due Dates
+ * AVC Plan: Week 1 (Wed 20th April)
+ * AVC Progress Report: Week 5 (Mon 16th May)
+ * Robot: Week 7 (Mon 30th May)
+ * Final Report: Week 9 (Mon 13th June)
 
 ###AVC Project Plan
  
