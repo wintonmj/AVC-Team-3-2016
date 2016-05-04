@@ -1,6 +1,6 @@
 # AVC-Team-3-2016
 
-**Week 1 Checklist**
+###Week 1 Checklist
 - [x] Grace: Create AVC task plan, get everyone to sign and hand in plan on time.
 - [x] Chris & Michael: Create code to test if robot moves forward.
 - [x] Michael: Create github for group 3.
