@@ -7,7 +7,7 @@
 - [x] Aaron & Mayunk: assemble the chasis.
   
 *Everyone has done there jobs for this week*
-*We have set goals for the next week ([Week 2 Checklist](#week-2-checklist))
+*We have set goals for the next week ([week 2 checklist](#week-2-checklist))
   
   
 
