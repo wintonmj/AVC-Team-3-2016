@@ -48,7 +48,7 @@
 
 *In terms of software we have managed to complete all our tasks for the week. The robot now goes through the gate and through quadrant 1 and 2 without a hitch and does it very quicky infact (about 10s) after optimisation. Speed looks good. We have put thought into quadrant 2/3 with the 90 degree turns etc and come up with two viable solutions which we will look to implement next week. Hardware, everything is in place, and looking to do CAD next week.*
 
-###Week 4 Checklist to come
+###Week 4 Checklist
 - [ ] Grace: Make sure team is up to date, help with any work that is falling behind. Help with getting the CAD design ready and anything the software needs help with.
 - [ ] Chris & Michael: Refine and further design and then implement quadrant 2/3 code to get it up to the maze stage. Will implement it at a slow rate first and then try tweek it to get through faster and faster. Optimisation may not be done by end of Week 4 due to other commitments like the COMP test and other assignments.
 - [x] Aaron & Mayunk: Work on the CAD the design and make sure we have a good design done by end of week.
