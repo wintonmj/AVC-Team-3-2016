@@ -23,13 +23,13 @@ int main() {
     int zeroCentre[] = {-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8};
     int n_whites = 0;
     int method = 1;
-    int flag = 1;
+    int flag = 0;
 
     // PID
     double error = 0.0;
     double Perror = 0.0;
-    double Pconstant = 9.2; // correcting speed (proportional to distance away from line)
-    double Dconstant = 1050; // Change later
+    double Pconstant = 7.5; // correcting speed (proportional to distance away from line)
+    double Dconstant = 1080; // Change later
 
     struct timespec now;
     double proportional = error * Pconstant; // error correction for adjusting motor speed
@@ -37,23 +37,26 @@ int main() {
     double prev_ms = 0;
     double delta_ms = 0;
     double derivative = 0;
-    //double Tcorrection = proportional + derivative;
+    double Tcorrection = proportional + derivative;
 
     //Motor Control
     int speed = 0;
-    double v_left = speed + (proportional + derivative); //speed of left motor
-    double v_right = speed - (proportional + derivative); // speed of right motor
-
-//    speed = 140; // boost through gate
-//    v_left = speed + (proportional + derivative); // speed of left motor
-//    v_right = speed - (proportional + derivative); // speed of right motor
-//    set_motor(1,v_left);
-//    set_motor(2,v_right);
-
-    speed = 65;
-
-    v_left = speed + (proportional + derivative); // speed of left motor
-    v_right = speed - (proportional + derivative); // speed of right motor
+    double v_left = speed + (Tcorrection); //speed of left motor
+    double v_right = speed - (Tcorrection); // speed of right motor
+    //connects to server with the ip address 130.195.6.196
+    connect_to_server("130.195.6.196", 1024);
+    //sends a message to the connected server
+    send_to_server("Please"); // "Please is the 'codeword', may change
+    //receives message from the connected server
+    char message[24];
+    receive_from_server(message);
+    send_to_server(message); // send password back to server to open up gate.
+    
+    Sleep(1,000000);
+    speed = 90;
+    
+    v_left = speed + Tcorrection; // speed of left motor
+    v_right = speed - Tcorrection; // speed of right motor
 
     // Method for completing quadrant 1
     while (method == 1) {
@@ -97,20 +100,21 @@ int main() {
             error = error/((double)n_whites);
             proportional = error * Pconstant;
 	    derivative = ((error-Perror)/delta_ms) * Dconstant;
+	    Tcorrection = proportional + derivative;
 
 	    if (DEBUG == 1) {
 		printf("\n");
 	    }
 
-	    v_left = speed + (proportional + derivative);
-            v_right = speed - (proportional + derivative);
+	    v_left = speed + Tcorrection;
+            v_right = speed - Tcorrection;
 	}
 
         else if (n_whites == 16) {
             method = 2;
 	speed = 0;
         }
-        else {
+        else if (n_whites == 0){
 		if (DEBUG == 1) {
                     printf("No line detected\n");
 		}
@@ -138,8 +142,8 @@ int main() {
 
         set_motor(1,v_left);
         set_motor(2,v_right);
-
 }
+
     // method for completing quadrant 2/3
 	while (method == 2) {
 		speed = 0;
