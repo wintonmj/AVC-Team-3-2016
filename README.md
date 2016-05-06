@@ -46,7 +46,7 @@
 - [x] Chris & Michael: Test out the code from 1st and second week, have gate opening and get robot following the line smoothly (maybe the derivative PID control system) before the 'B-' stage. Also think about a method for the robot to deal with T-junctions/90 degree turns etc.
 - [x] Aaron & Mayunk: Have a good idea for a finalised chassis for up to the maze (flip the camera, add on the wheel etc). Also look at 3D modelling/printing a ball following wheel.
 
-*In terms of software we have managed to complete all our tasks for the week. The robot now goes through the gate and through quadrant 1 and 2 without a hitch and does it very quicky infact (about 10s) after optimisation. Speed looks good. We have put thought into quadrant 2/3 with the 90 degree turns etc and come up with two viable solutions which we will look to implement next week.
+*In terms of software we have managed to complete all our tasks for the week. The robot now goes through the gate and through quadrant 1 and 2 without a hitch and does it very quicky infact (about 10s) after optimisation. Speed looks good. We have put thought into quadrant 2/3 with the 90 degree turns etc and come up with two viable solutions which we will look to implement next week.*
 
 ###Week 4 Checklist to come
 - [ ] Grace:
