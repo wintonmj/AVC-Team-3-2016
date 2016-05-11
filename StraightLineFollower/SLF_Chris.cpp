@@ -17,7 +17,6 @@ int main() {
 
     init(0);
 
-	
     int DEBUG = 0;
     int width = 320;
     //int height = 240;
@@ -170,10 +169,27 @@ int main() {
         set_motor(2, v_right);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // method for completing quadrant 2/3
     while (method == 2) {
       
-      	clock_gettime(CLOCK_REALTIME, & now);
+    clock_gettime(CLOCK_REALTIME, & now);
     prev_ms = (now.tv_sec * 1000 + (now.tv_nsec + 500000) / 1000000); //convert to milliseconds
     if (DEBUG == 2) {
         printf("\n PREV  %f", prev_ms);
