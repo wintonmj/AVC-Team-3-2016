@@ -15,7 +15,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 | 1    | Robot moving forward | AVC Plan | PHYS122 test | [Week 1 Checklist](#week-1-checklist) |
 | 2    | Discuss issues |  | Some home for holidays | [Week 2 Checklist](#week-2-checklist) |
 | 3    | Have quadrant 1 DONE |  |  | [Week 3 Checklist](#week-3-checklist) |
-| 4    | Have quadrant 2 DONE |  | COMP102 test  | [Week 4 Checklist] (#week-4-checklist)  |
+| 4    | Have quadrant 2 DONE |  | COMP102 test  | [Week 4 Checklist](#week-4-checklist)  |
 | 5    | Have quadrant 3 DONE by end of week 5 | Progress Report | ENGR121 test |  |
 | 6    | Have quadrant 4 DONE by end of week 6 |  |  |  |
 | 7    | Have Robot Ready | Robot | ENGR101 test |  |
@@ -53,15 +53,20 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 
 
 ###Week 4 Checklist
-- [ ] Grace: Make sure team is up to date, help with any work that is falling behind. Help with getting the CAD design ready and anything the software needs help with.
-- [ ] Chris & Michael: Refine and further design and then implement quadrant 2/3 code to get it up to the maze stage. Will implement it at a slow rate first and then try tweek it to get through faster and faster. Optimisation may not be done by end of Week 4 due to other commitments like the COMP test and other assignments.
-- [ ] Aaron & Mayunk: Work on the CAD the design and make sure we have a good design done by end of week.
+- [x] Grace: Make sure team is up to date, help with any work that is falling behind. Help with getting the CAD design ready and anything the software needs help with.
+- [x] Chris & Michael: Refine and further design and then implement quadrant 2/3 code to get it up to the maze stage. Will implement it at a slow rate first and then try tweek it to get through faster and faster. Optimisation may not be done by end of Week 4 due to other commitments like the COMP test and other assignments.
+- [x] Aaron & Mayunk: Work on the CAD the design and make sure we have a good design done by end of week.
+
+*As we had the comp 102 test on the same day as our lab, we didnt seem to get much done. Hardware managed to some what agree on the design, but having trouble with CAD. Hopefully we can have something to print next week. Software managed to get rid of some bugs and modify the code.
 
 
-###Week 5 Checklist to come
-- [ ] Grace:
-- [ ] Chris & Michael:
-- [ ] Aaron & Mayunk: 
+###Week 5 Checklist
+- [ ] Grace: Get the right measurements for the CAD design, get everyone together for what needs to be done. 
+- [ ] Chris & Michael: Further work on quadrant 3?
+- [ ] Aaron & Mayunk: Work on CAD design and placement of IR sensors.
+
+
+###Week 6 Checklist to come
 
 
 ###Weekly Checklist
