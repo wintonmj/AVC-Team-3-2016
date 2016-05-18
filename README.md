@@ -63,7 +63,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 ###Week 5 Checklist
 - [x] Grace: Get the right measurements for the CAD design, get everyone together for what needs to be done. 
 - [x] Chris & Michael: Further work on quadrant 3?
-- [x] Aaron & Mayunk: Work on CAD design and placement of IR sensors.
+- [x] Aaron & Mayunk: Work on CAD design ~~and placement of IR sensors.~~
 
 *We managed to get our CAD designs from both Grace and Aaron onto one file and have that ready for printing. Hardware worked on a base for our bot on freeCAD. Sensor placement pushed back after the lab. Software managed to get the t junction working on our code, therefore able to get through quadrant 3.* 
 
