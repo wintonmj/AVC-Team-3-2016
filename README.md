@@ -16,7 +16,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 | 2    | Discuss issues |  | Some home for holidays | [Week 2 Checklist](#week-2-checklist) |
 | 3    | Have quadrant 1 DONE |  |  | [Week 3 Checklist](#week-3-checklist) |
 | 4    | Have quadrant 2 DONE |  | COMP102 test  | [Week 4 Checklist](#week-4-checklist)  |
-| 5    | Have quadrant 3 DONE by end of week 5 | Progress Report | ENGR121 test |  |
+| 5    | Have quadrant 3 DONE by end of week 5 | Progress Report | ENGR121 test |[Week 5 Checklist](#week-5-checklist)  |
 | 6    | Have quadrant 4 DONE by end of week 6 |  |  |  |
 | 7    | Have Robot Ready | Robot | ENGR101 test |  |
 | 8    | Work on finishing off Report |  |  |  |
@@ -57,16 +57,24 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 - [x] Chris & Michael: Refine and further design and then implement quadrant 2/3 code to get it up to the maze stage. Will implement it at a slow rate first and then try tweek it to get through faster and faster. Optimisation may not be done by end of Week 4 due to other commitments like the COMP test and other assignments.
 - [x] Aaron & Mayunk: Work on the CAD the design and make sure we have a good design done by end of week.
 
-*As we had the comp 102 test on the same day as our lab, we didnt seem to get much done. Hardware managed to some what agree on the design, but having trouble with CAD. Hopefully we can have something to print next week. Software managed to get rid of some bugs and modify the code.
+*As we had the comp 102 test on the same day as our lab, we didnt seem to get much done. Hardware managed to some what agree on the design, but having trouble with CAD. Hopefully we can have something to print next week. Software managed to get rid of some bugs and modify the code.*
 
 
 ###Week 5 Checklist
-- [ ] Grace: Get the right measurements for the CAD design, get everyone together for what needs to be done. 
-- [ ] Chris & Michael: Further work on quadrant 3?
-- [ ] Aaron & Mayunk: Work on CAD design and placement of IR sensors.
+- [x] Grace: Get the right measurements for the CAD design, get everyone together for what needs to be done. 
+- [x] Chris & Michael: Further work on quadrant 3?
+- [x] Aaron & Mayunk: Work on CAD design and placement of IR sensors.
+
+*We managed to get our CAD designs from both Grace and Aaron onto one file and have that ready for printing. Hardware worked on a base for our bot on freeCAD. Sensor placement pushed back after the lab. Software managed to get the t junction working on our code, therefore able to get through quadrant 3.* 
 
 
-###Week 6 Checklist to come
+###Week 6 Checklist
+- [ ] Grace: 
+- [ ] Chris & Michael: 
+- [ ] Aaron & Mayunk: 
+
+###Week 7 Checklist to come
+
 
 
 ###Weekly Checklist
