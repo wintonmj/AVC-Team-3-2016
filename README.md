@@ -17,7 +17,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 | 3    | Have quadrant 1 DONE |  |  | [Week 3 Checklist](#week-3-checklist) |
 | 4    | Have quadrant 2 DONE |  | COMP102 test  | [Week 4 Checklist](#week-4-checklist)  |
 | 5    | Have quadrant 3 DONE by end of week 5 | Progress Report | ENGR121 test |[Week 5 Checklist](#week-5-checklist)  |
-| 6    | Have quadrant 4 DONE by end of week 6 |  |  |  |
+| 6    | Have quadrant 4 DONE by end of week 6 |  |  | [Week 6 Checklist](#week-6-checklist) |
 | 7    | Have Robot Ready | Robot | ENGR101 test |  |
 | 8    | Work on finishing off Report |  |  |  |
 | 9    | Finish Report | Final Report |  |  |
