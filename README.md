@@ -69,9 +69,9 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 
 
 ###Week 6 Checklist
-- [ ] Grace: 
-- [ ] Chris & Michael: 
-- [ ] Aaron & Mayunk: 
+- [ ] Grace: Help with anything getting behind/software for quadrant 4.
+- [ ] Chris & Michael: Work on quadrant 4 code, with IR sensors.
+- [ ] Aaron & Mayunk: Have the sensors placed ready for software to code.
 
 ###Week 7 Checklist to come
 
