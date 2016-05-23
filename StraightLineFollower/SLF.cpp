@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <time.h>
+#include <signal.h>
+#include <stdlib.h>
 
 //these load specific methods from the ENGR101 library
 extern "C" int init(int d_lev);
@@ -11,8 +13,9 @@ extern "C" int connect_to_server(char const server_addr[15], int port);
 extern "C" int send_to_server(char const message[24]);
 extern "C" int receive_from_server(char const message[24]);
 
-int DEBUG = 0;
-#define NTP 16
+int DEBUG = 1;
+int THRESHOLD = 115;
+#define NTP 32
 
 // Global Variables
 
@@ -23,7 +26,7 @@ double dy = height / NTP;
 int midPic[NTP];
 int leftPic[NTP];
 int rightPic[NTP];
-int zeroCentre[] = { -8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8 };
+int zeroCentre[] = { -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 int n_whites_mid = 0;
 int n_whites_left = 0;
 int n_whites_right = 0;
@@ -32,12 +35,13 @@ int flag = 0;
 
 int test = 0;
 int Q2 = 0;
+int left_counter = 0;
 
 // PID
 double error_mid = 0.0;
 double Perror_mid = 0.0;
-double Pconstant = 7.5; // correcting speed (proportional to distance away from line)
-double Dconstant = 1080; // Change later
+double Pconstant = 1.75; // correcting speed (proportional to distance away from line)
+double Dconstant = 375; //1080; // Change later
 
 struct timespec now;
 double proportional = error_mid * Pconstant; // error correction for adjusting motor speed
@@ -49,12 +53,16 @@ double Tcorrection = proportional + derivative;
 
 //Motor Control
 int speed = 0;
-double v_left = speed + (Tcorrection); //speed of left motor
-double v_right = speed - (Tcorrection); // speed of right motor
+double v_left = speed - (Tcorrection); //speed of left motor
+double v_right = speed + (Tcorrection); // speed of right motor
+
+void terminate(int);
 
 int main()
 {
     init(0);
+    signal(SIGINT, terminate);
+    signal(SIGTERM, terminate);
 
     if (test == 1) {
 
@@ -69,10 +77,10 @@ int main()
     }
 
     Sleep(1, 000000);
-    speed = 75;
+    speed = 90;
 
-    v_left = speed + Tcorrection; // speed of left motor
-    v_right = speed - Tcorrection; // speed of right motor
+    v_left = speed - Tcorrection; // speed of left motor
+    v_right = speed + Tcorrection; // speed of right motor
 
     // Method for completing quadrant 1
     while (method == 1) {
@@ -87,15 +95,11 @@ int main()
         }
         take_picture();
         n_whites_mid = 0;
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < NTP; i++) {
             int x = dx * i + (dx / 2);
             midPic[i] = get_pixel(x, 1, 3);
-	    
-	    if (DEBUG == 1) {
-                printf("%d ", midPic[i]);
-            }
             
-            if (midPic[i] > 125){
+		if (midPic[i] > THRESHOLD){
                 // 1 = white
                 midPic[i] = 1;
                 n_whites_mid++;
@@ -105,15 +109,19 @@ int main()
                 midPic[i] = 0;
             }
 
+	if (DEBUG == 1) {
+		printf("  %d",midPic[i]);
+	}
+
         }
         
         // reset variables
         error_mid = 0.0;
-        for (int l = 0; l < 16; l++) {
+        for (int l = 0; l < NTP; l++) {
             error_mid = error_mid + (zeroCentre[l] * midPic[l]);
         }
 
-        if (n_whites_mid != 0 && n_whites_mid != 16) {
+        if (n_whites_mid != 0 && n_whites_mid != NTP) {
             error_mid = error_mid / ((double)n_whites_mid);
             proportional = error_mid * Pconstant;
             derivative = ((error_mid - Perror_mid) / delta_ms) * Dconstant;
@@ -122,8 +130,8 @@ int main()
             if (DEBUG == 1) {
                 printf("\n");
             }
-            v_left = speed + Tcorrection;
-            v_right = speed - Tcorrection;
+            v_left = speed - Tcorrection;
+            v_right = speed + Tcorrection;
 
             if (v_left > 255) {
                 v_left = 255;
@@ -133,8 +141,8 @@ int main()
                 v_right = 255;
             }
         }
-        
-        else if (n_whites_mid == 16) {
+      
+       else if (n_whites_mid == NTP) {
             method = 2;
             v_left = 0;
             v_right = 0;
@@ -144,8 +152,8 @@ int main()
             if (DEBUG == 1) {
                 printf("No line detected\n");
             }
-            v_left = -1 * speed;
-            v_right = -1 * speed;
+            v_left = -40;
+            v_right = -40;
         }
 
         if (DEBUG == 2) {
@@ -189,18 +197,16 @@ int main()
     // method for completing quadrant 2/3
     while (method == 2) {
 
-        speed = 50;
-        Pconstant = 6;
+        speed = 65;
+        Pconstant = 1.2;
+	Dconstant = 300;
 
-/*        if (Q2 == 0) {
-            v_right = 40;
-            v_left = 40;
+/*if (Q2 == 0) {
             set_motor(1, v_left);
             set_motor(2, v_right);
-            Sleep(0, 250000);
+            Sleep(0,200000);
             Q2 = 1;
-        }*/
-
+}*/
         clock_gettime(CLOCK_REALTIME, &now);
         prev_ms = (now.tv_sec * 1000 + (now.tv_nsec + 500000) / 1000000); //convert to milliseconds
         if (DEBUG == 2) {
@@ -211,14 +217,14 @@ int main()
         n_whites_left = 0;
         n_whites_right = 0;
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < NTP; i++) {
             int x = dx * i + (dx / 2);
             int y = dy * i + (dy / 2);
             midPic[i] = get_pixel(x, 1, 3);
             leftPic[i] = get_pixel(1, y, 3);
             rightPic[i] = get_pixel(319, y, 3);
 
-            if (midPic[i] > 125) {
+            if (midPic[i] > 130) {
                 // 1 = white
                 midPic[i] = 1;
                 n_whites_mid++;
@@ -250,28 +256,61 @@ int main()
         }
         // reset variables
         error_mid = 0.0;
-        for (int l = 0; l < 16; l++) {
+        for (int l = 0; l < NTP; l++) {
             error_mid = error_mid + zeroCentre[l] * midPic[l];
         }
 
         // t junction
-        while (midPic[8] == 0 && n_whites_left > 0 && n_whites_right > 0) {
-            v_left = speed;
+        while (midPic[16] == 0  && n_whites_left > 0 && n_whites_right > 0) {
+	    v_left = speed;
             v_right = 0;
             set_motor(2, v_right);
             set_motor(1, v_left);
-	    Sleep(0,300000);
+	    printf("T juc \n");
+	    fflush(stdout);
+	    Sleep(0,800000);
 	    break;
         }
 
+	/*if (midPic[16] == 0 && n_whites_left > 0 && n_whites_right < 3) {
+		left_counter++;
+		Sleep(0,500000);
+	}*/
+
+	//left
+	//if (left_counter >= 2) {
+		while (midPic[16] == 0 && n_whites_left > 0 && n_whites_right < 3) {
+			v_left = speed; 
+			v_right = 0;
+			set_motor(1, v_left);
+			set_motor(2, v_right);
+			printf("left juc \n");
+			fflush(stdout);
+			Sleep(0,500000);
+			break;
+		}
+	//}
+	//right
+	
+	while (midPic[16] == 0 && n_whites_left < 3 && n_whites_right > 0){
+		v_left = 0;
+		v_right = speed;
+		set_motor(1,v_left);
+		set_motor(2,v_right);
+		printf("right juc \n");
+		fflush(stdout);
+		Sleep(0,500000);
+		break;
+	}
+
         // pid
-        if (n_whites_mid != 0 && n_whites_mid != 16) {
+        if (n_whites_mid != 0 && n_whites_mid != NTP) {
 	    error_mid = error_mid / ((double)n_whites_mid);
             proportional = error_mid * Pconstant;
             derivative = ((error_mid - Perror_mid) / delta_ms) * Dconstant;
             Tcorrection = proportional + derivative;
-            v_left = speed + Tcorrection;
-            v_right = speed - Tcorrection;
+            v_left = speed - Tcorrection;
+            v_right = speed + Tcorrection;
 
             if (v_left > 255) {
                 v_left = speed;
@@ -284,8 +323,8 @@ int main()
 
         else if (n_whites_mid == 0)
             {
-                v_left = 1.3 * -speed;
-                v_right = 1.3 * -speed;
+                v_left = 45;
+                v_right = 45;
             }
 
         Perror_mid = error_mid;
@@ -296,3 +335,9 @@ int main()
         set_motor(2, v_right);
     }
 }
+
+void terminate(int signum) {
+	set_motor(1,0);
+	set_motor(2,0);
+	exit(signum);
+   }
