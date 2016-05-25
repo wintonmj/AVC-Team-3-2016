@@ -14,17 +14,16 @@ int main(){
 
     int adc_reading;
     int adc_reading2;
-    // int adc_reading3;
+    int adc_reading3;
 
     //Prints read analog value
     for (int i = 0; i < 100; i++) {
-
         //Reads from Analog Pin 0 (A0) through A7
         adc_reading = read_analog(0);
         adc_reading2 = read_analog(1);
-        //adc_reading3 = read_analog(0); - Not added yet
+        adc_reading3 = read_analog(2);
 
-        printf("Sensor 1: %d    Sensor 2: %d\n",adc_reading, adc_reading2);
+        printf("Left Sensor: %d    Middle Sensor: %d    Right Sensor: %d\n",adc_reading, adc_reading2, adc_reading3);
         //Waits for 0.5 seconds (500000 microseconds)
         Sleep(0,500000);
     }
