@@ -15,7 +15,7 @@ extern "C" int receive_from_server(char const message[24]);
 extern "C" int read_analog(int ch_adc);
 
 int DEBUG = 1;
-int THRESHOLD = 115;
+int THRESHOLD = 125;
 #define NTP 32
 
 // Global Variables
@@ -37,13 +37,12 @@ int flag = 0;
 
 int test = 0;
 int Q2 = 0;
-int left_counter = 0;
 
 // PID
 double error_mid = 0.0;
 double Perror_mid = 0.0;
 double Pconstant = 1.75; // correcting speed (proportional to distance away from line)
-double Dconstant = 0; // Change later
+double Dconstant = 340; // Change later
 
 struct timespec now;
 double proportional = error_mid * Pconstant; // error correction for adjusting motor speed
@@ -127,6 +126,7 @@ int main()
         
         // reset variables
         error_mid = 0.0;
+
         for (int l = 0; l < NTP; l++) {
             error_mid = error_mid + (zeroCentre[l] * midPic[l]);
         }
@@ -140,7 +140,8 @@ int main()
             if (DEBUG == 1) {
                 printf("\n");
             }
-            v_left = speed - Tcorrection;
+            
+	    v_left = speed - Tcorrection;
             v_right = speed + Tcorrection;
 
             if (v_left > 255) {
@@ -293,7 +294,7 @@ int main()
 	    break;
         }
         
-/*	// left turn
+	// left turn
 	while (midPic[16] == 0 && n_whites_left != 0 && n_whites_right == 0) {
 		v_left = speed; 
 		v_right = -0.5 * speed;
@@ -301,7 +302,7 @@ int main()
 		set_motor(2, v_right);
 		printf("left turn\n");
 		fflush(stdout);
-		Sleep(,750000);
+		Sleep(0,750000);
 		break;
 	}
 	
@@ -318,7 +319,7 @@ int main()
 	}
 	
 	// dead end - should do 180
-	while (n_whites_mid == 0 && n_whites_left == 0 && n_whites_right == 0) {
+	/*while (n_whites_mid == 0 && n_whites_left == 0 && n_whites_right == 0) {
 	    v_left = speed;
 	    v_right = -speed;
 	    set_motor(1,v_left);
@@ -328,7 +329,7 @@ int main()
 	    Sleep(1,000000);
 	    break;
 	}
-*/
+	*/
 
         // pid
         if (n_whites_mid != 0 && n_whites_mid != NTP) {
@@ -397,7 +398,7 @@ int main()
 	//printf("straight\n");
 	//fflush(stdout);
       } 
-/*     
+     
       // no wall on the left and a wall infront and on the right
       else if(sensor_left < 250 && sensor_mid > 200 && sensor_right > 400){
 	 // turn left 
@@ -415,7 +416,7 @@ int main()
 	 v_left = 40;
 	 v_right = -40;
       }
-*/      
+      
       set_motor(1,v_left);
       set_motor(2,v_right);   
   }
