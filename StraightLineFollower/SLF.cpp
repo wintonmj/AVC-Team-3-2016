@@ -200,8 +200,8 @@ int main()
     while (method == 2) {
 
         speed = 55;
-        Pconstant = 1.1;
-
+        Pconstant = 0.6;
+	Dconstant = 375;
         clock_gettime(CLOCK_REALTIME, &now);
         prev_ms = (now.tv_sec * 1000 + (now.tv_nsec + 500000) / 1000000); //convert to milliseconds
         if (DEBUG == 2) {
@@ -266,7 +266,7 @@ int main()
             v_right = speed;
             set_motor(2, v_right);
             set_motor(1, v_left);
-            Sleep(0, 200000);
+            Sleep(0,200000);
 
             while (midPic[16] == 0) {
                 take_picture();
@@ -287,7 +287,7 @@ int main()
                     }
                 }
                 v_left = speed;
-                v_right = -0.5 * speed;
+                v_right = -0.7 * speed;
                 set_motor(2, v_right);
                 set_motor(1, v_left);
                 printf("t jun\n");
@@ -295,12 +295,12 @@ int main()
             }
         }
         // left turn
-        else if (midPic[16] == 0 && n_whites_left != 0 && n_whites_right == 0) {
+        else if (midPic[16] == 0 && n_whites_left != 0 && n_whites_right < 5) {
             v_left = speed;
             v_right = speed;
             set_motor(2, v_right);
             set_motor(1, v_left);
-            Sleep(0, 200000);
+            Sleep(0,200000);
 
             while (midPic[16] == 0) {
                 take_picture();
@@ -321,7 +321,7 @@ int main()
                     }
                 }
                 v_left = speed;
-                v_right = -0.5 * speed;
+                v_right = -0.7 * speed;
                 set_motor(2, v_right);
                 set_motor(1, v_left);
 		printf("left turn\n");
@@ -329,12 +329,12 @@ int main()
             }
         }
         //right turn
-        else if (midPic[16] == 0 && n_whites_left == 0 && n_whites_right != 0) {
+        else if (midPic[16] == 0 && n_whites_left < 5 && n_whites_right != 0) {
             v_left = speed;
             v_right = speed;
             set_motor(2, v_right);
             set_motor(1, v_left);
-            Sleep(0, 200000);
+            Sleep(0,200000);
 
             while (midPic[16] == 0) {
                 take_picture();
@@ -357,7 +357,7 @@ int main()
                 printf("right turn\n");
                 fflush(stdout);
                 v_left = speed;
-                v_right = -0.5 * speed;
+                v_right = -0.7 * speed;
                 set_motor(1, v_right);
                 set_motor(2, v_left);
             }
