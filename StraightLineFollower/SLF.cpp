@@ -261,63 +261,138 @@ int main()
         }
 
         // t junction
-        while (midPic[16] == 0 && n_whites_left != 0 && n_whites_right != 0) {
+        if (midPic[16] == 0 && n_whites_left != 0 && n_whites_right != 0) {
             v_left = speed;
-            v_right = -0.5 * speed;
-            set_motor(2, v_right);
-            set_motor(1, v_left);
-            printf("t jun\n");
-            fflush(stdout);
-            Sleep(0,700000);
-            break;
-        }
-	
-	/*
-        // left turn
-        while (midPic[16] == 0 && n_whites_left != 0 && n_whites_right == 0) {
-            v_left = speed;
-            v_right = -0.5 * speed;
-            set_motor(1, v_left);
-            set_motor(2, v_right);
-            printf("left turn\n");
-            fflush(stdout);
-            Sleep(0,770000);
-	    set_motor(1,0);
-	    set_motor(2,0);
-            break;
-        }*/
-
-        
-        //right turn
-        while (midPic[16] == 0 && n_whites_left == 0 && n_whites_right != 0) {
-            v_left = -0.5 * speed;
             v_right = speed;
-            set_motor(1, v_left);
             set_motor(2, v_right);
-            printf("right turn\n");
-            fflush(stdout);
-            Sleep(0,770000);
-	    set_motor(1,0);
-	    set_motor(2,0);
-            break;
-        }
+            set_motor(1, v_left);
+            Sleep(0, 200000);
 
-        /*
+            while (midPic[16] == 0) {
+                take_picture();
+                n_whites_mid = 0;
+
+                for (int i = 0; i < NTP; i++) {
+                    int x = dx * i + (dx / 2);
+                    midPic[i] = get_pixel(x, 1, 3);
+
+                    if (midPic[i] > THRESHOLD) {
+                        // 1 = white
+                        midPic[i] = 1;
+                        n_whites_mid++;
+                    }
+                    else {
+                        // 0 = black
+                        midPic[i] = 0;
+                    }
+                }
+                v_left = speed;
+                v_right = -0.5 * speed;
+                set_motor(2, v_right);
+                set_motor(1, v_left);
+                printf("t jun\n");
+                fflush(stdout);
+            }
+        }
+        // left turn
+        else if (midPic[16] == 0 && n_whites_left != 0 && n_whites_right == 0) {
+            v_left = speed;
+            v_right = speed;
+            set_motor(2, v_right);
+            set_motor(1, v_left);
+            Sleep(0, 200000);
+
+            while (midPic[16] == 0) {
+                take_picture();
+                n_whites_mid = 0;
+
+                for (int i = 0; i < NTP; i++) {
+                    int x = dx * i + (dx / 2);
+                    midPic[i] = get_pixel(x, 1, 3);
+
+                    if (midPic[i] > THRESHOLD) {
+                        // 1 = white
+                        midPic[i] = 1;
+                        n_whites_mid++;
+                    }
+                    else {
+                        // 0 = black
+                        midPic[i] = 0;
+                    }
+                }
+                v_left = speed;
+                v_right = -0.5 * speed;
+                set_motor(2, v_right);
+                set_motor(1, v_left);
+		printf("left turn\n");
+                fflush(stdout);
+            }
+        }
+        //right turn
+        else if (midPic[16] == 0 && n_whites_left == 0 && n_whites_right != 0) {
+            v_left = speed;
+            v_right = speed;
+            set_motor(2, v_right);
+            set_motor(1, v_left);
+            Sleep(0, 200000);
+
+            while (midPic[16] == 0) {
+                take_picture();
+                n_whites_mid = 0;
+
+                for (int i = 0; i < NTP; i++) {
+                    int x = dx * i + (dx / 2);
+                    midPic[i] = get_pixel(x, 1, 3);
+
+                    if (midPic[i] > THRESHOLD) {
+                        // 1 = white
+                        midPic[i] = 1;
+                        n_whites_mid++;
+                    }
+                    else {
+                        // 0 = black
+                        midPic[i] = 0;
+                    }
+                }
+                printf("right turn\n");
+                fflush(stdout);
+                v_left = speed;
+                v_right = -0.5 * speed;
+                set_motor(1, v_right);
+                set_motor(2, v_left);
+            }
+        }
         // dead end - should do 180
-        while (n_whites_mid == 0 && n_whites_left == 0 && n_whites_right == 0) {
-	    v_left = speed;
-	    v_right = -speed;
-	    set_motor(1,v_left);
-	    set_motor(2,v_right);
-	    printf("u turn\n");
-	    fflush(stdout);
-	    Sleep(1,000000);
-	    break;
-	}
-	*/
+        else if (n_whites_mid == 0 && n_whites_left == 0 && n_whites_right == 0) {
+            while (midPic[16] == 0) {
+                take_picture();
+                n_whites_mid = 0;
+
+                for (int i = 0; i < NTP; i++) {
+                    int x = dx * i + (dx / 2);
+                    midPic[i] = get_pixel(x, 1, 3);
+
+                    if (midPic[i] > THRESHOLD) {
+                        // 1 = white
+                        midPic[i] = 1;
+                        n_whites_mid++;
+                    }
+                    else {
+                        // 0 = black
+                        midPic[i] = 0;
+                    }
+                }
+		printf("u turn\n");
+                fflush(stdout);
+                v_left = speed;
+                v_right = -speed;
+                set_motor(1, v_right);
+                set_motor(2, v_left);
+            }
+        }
 
         // pid
-        if (n_whites_mid != 0 && n_whites_mid != NTP) {
+        else if (n_whites_mid != 0 && n_whites_mid != NTP) {
             error_mid = error_mid / ((double)n_whites_mid);
             proportional = error_mid * Pconstant;
             derivative = ((error_mid - Perror_mid) / delta_ms) * Dconstant;
