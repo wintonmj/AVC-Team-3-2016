@@ -32,7 +32,7 @@ int zeroCentre[] = { -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, 
 int n_whites_mid = 0;
 int n_whites_left = 0;
 int n_whites_right = 0;
-int method = 3;
+int method = 1;
 int flag = 0;
 
 int test = 0;
@@ -198,8 +198,8 @@ int main()
 
     // method for completing quadrant 2/3
     while (method == 2) {
-
-        speed = 55;
+	
+        speed = 45;
         Pconstant = 0.6;
 	Dconstant = 375;
         clock_gettime(CLOCK_REALTIME, &now);
@@ -211,7 +211,7 @@ int main()
         n_whites_mid = 0;
         n_whites_left = 0;
         n_whites_right = 0;
-
+	sensor_right = read_analog(2);
         for (int i = 0; i < NTP; i++) {
             int x = dx * i + (dx / 2);
             int y = dy * i + (dy / 2);
@@ -249,7 +249,7 @@ int main()
                 rightPic[i] = 0;
             }
 
-            if (redPic > 190) {
+            if (redPic > 190 && sensor_right > 300) {
                 method = 3;
             }
         }
@@ -383,8 +383,8 @@ int main()
                 }
 		printf("u turn\n");
                 fflush(stdout);
-                v_left = speed;
-                v_right = -speed;
+                v_left = -speed;
+                v_right = speed;
                 set_motor(1, v_right);
                 set_motor(2, v_left);
             }
@@ -429,7 +429,7 @@ int main()
         int error;
 	Perror_mid = error;
         speed = 40; 
-	Dconstant = 0.4;
+	Dconstant = 0.35;
 
         // Loop here:
         sensor_left = read_analog(0);
@@ -444,53 +444,10 @@ int main()
 		if (sensor_mid > 470){
 			set_motor(1,-speed);
 			set_motor(2,speed);
-			Sleep(0,300000);
+			Sleep(0,350000);
 		}
 	set_motor(2,speed - proportional);
 	set_motor(1,speed + proportional);
-
-
-        // if we have a wall to our left and front but none on the right
-        // turn right
-      //  if (sensor_right < 125 && sensor_mid > 200 && sensor_left > 325) {
-            printf("right jun, left sensor: %d   mid sensor: %d   right sensor: %d\n", sensor_left, sensor_mid, sensor_right);
-            /*fflush(stdout);
-	    printf("right turn\n");
-	    fflush(stdout);
-            v_left = (0.5 * speed) + proportional;
-            v_right = speed - proportional;
-        }
-
-        // aslong as we have a wall on our right and no wall infront
-        if (sensor_right > 325 && sensor_mid < 200) {
-            // straight
-            v_left = speed + proportional;
-            v_right = speed - proportional;
-            printf("straight\n");
-            fflush(stdout);
-        }
-
-        // no wall on the left and a wall infront and on the right
-        else if (sensor_left < 250 && sensor_mid > 200 && sensor_right > 400) {
-            // turn left
-            printf("left turn\n");
-            fflush(stdout);
-            v_left = speed - proportional;
-            v_right = (0.5 * speed) + proportional;
-        }
-
-        // surrounded by walls, turn until no wall ahead and wall on right
-        else if (sensor_left < 300 && sensor_mid > 300 && sensor_right < 300) {
-            // U turn
-            printf("u turn\n");
-            fflush(stdout);
-            v_left = 40;
-            v_right = -40;
-        }
-
-        set_motor(1, v_left);
-        set_motor(2, v_right);
-    }*/
 }
 
 }
