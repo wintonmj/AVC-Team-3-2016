@@ -14,7 +14,7 @@ extern "C" int send_to_server(char const message[24]);
 extern "C" int receive_from_server(char const message[24]);
 extern "C" int read_analog(int ch_adc);
 
-int DEBUG = 1;
+int DEBUG = 0;
 int THRESHOLD = 125;
 #define NTP 32
 
@@ -32,7 +32,7 @@ int zeroCentre[] = { -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, 
 int n_whites_mid = 0;
 int n_whites_left = 0;
 int n_whites_right = 0;
-int method = 2;
+int method = 3;
 int flag = 0;
 
 int test = 0;
@@ -218,8 +218,7 @@ int main()
             midPic[i] = get_pixel(x, 1, 3);
             leftPic[i] = get_pixel(1, y, 3);
             rightPic[i] = get_pixel(319, y, 3);
-            /*redPic = get_pixel(160, 1, 0); // gets red values
-	    printf("%d\n", redPic);*/
+            redPic = get_pixel(160, 1, 0); // gets red values
             if (midPic[i] > 130) {
                 // 1 = white
                 midPic[i] = 1;
@@ -250,9 +249,9 @@ int main()
                 rightPic[i] = 0;
             }
 
-            /*if (redPic > 190) {
+            if (redPic > 190) {
                 method = 3;
-            }*/
+            }
         }
         // reset variables
         error_mid = 0.0;
@@ -423,25 +422,41 @@ int main()
     }
 
     while (method == 3) {
-        //int sensor_left;
-        //int sensor_mid;
-        //int sensor_right;
-        Pconstant = 0.01;
+      
+
+
+ 	Pconstant = 0.6;
         int error;
-        speed = 50;
-        double proportional = error * Pconstant;
+	Perror_mid = error;
+        speed = 40; 
+	Dconstant = 0.4;
 
         // Loop here:
         sensor_left = read_analog(0);
         sensor_mid = read_analog(1);
         sensor_right = read_analog(2);
-        error = sensor_right - 325; // 600 is roughly the value of the robot being in centre
+        error = sensor_right - sensor_left; 
+
+	proportional = error * Pconstant;
+	proportional = ((proportional / 770)*100);
+	derivative = ((error - Perror_mid)/0.1)*Dconstant;
+
+		if (sensor_mid > 470){
+			set_motor(1,-speed);
+			set_motor(2,speed);
+			Sleep(0,300000);
+		}
+	set_motor(2,speed - proportional);
+	set_motor(1,speed + proportional);
+
 
         // if we have a wall to our left and front but none on the right
         // turn right
-        if (sensor_right < 125 && sensor_mid > 175 && sensor_left > 325) {
-            //printf("right jun, left sensor: %d   mid sensor: %d   right sensor: %d\n", sensor_left, sensor_mid, sensor_right);
-            //fflush(stdout);
+      //  if (sensor_right < 125 && sensor_mid > 200 && sensor_left > 325) {
+            printf("right jun, left sensor: %d   mid sensor: %d   right sensor: %d\n", sensor_left, sensor_mid, sensor_right);
+            /*fflush(stdout);
+	    printf("right turn\n");
+	    fflush(stdout);
             v_left = (0.5 * speed) + proportional;
             v_right = speed - proportional;
         }
@@ -451,8 +466,8 @@ int main()
             // straight
             v_left = speed + proportional;
             v_right = speed - proportional;
-            //printf("straight\n");
-            //fflush(stdout);
+            printf("straight\n");
+            fflush(stdout);
         }
 
         // no wall on the left and a wall infront and on the right
@@ -460,8 +475,8 @@ int main()
             // turn left
             printf("left turn\n");
             fflush(stdout);
-            v_left = (0.5 * speed) - proportional;
-            v_right = speed + proportional;
+            v_left = speed - proportional;
+            v_right = (0.5 * speed) + proportional;
         }
 
         // surrounded by walls, turn until no wall ahead and wall on right
@@ -475,9 +490,10 @@ int main()
 
         set_motor(1, v_left);
         set_motor(2, v_right);
-    }
+    }*/
 }
 
+}
 void terminate(int signum)
 {
     set_motor(1, 0);
