@@ -73,7 +73,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 - [x] Chris & Michael: Work on quadrant 4 code, with IR sensors.
 - [x] Aaron & Mayunk: Have the sensors placed ready for software to code.
 
-**This week we were well organised, we managed to get the robot moving through all quadrants. Hardware changed design so it would fit through the walled maze better ready for the final day. 
+*This week we were well organised, we managed to get the robot moving through all quadrants. Hardware changed design so it would fit through the walled maze better ready for the final day.*
 
 ###Week 7 Checklist
 - [ ] Did our AVC complete the maze?
