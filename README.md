@@ -18,7 +18,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 | 4    | Have quadrant 2 DONE |  | COMP102 test  | [Week 4 Checklist](#week-4-checklist)  |
 | 5    | Have quadrant 3 DONE by end of week 5 | Progress Report | ENGR121 test |[Week 5 Checklist](#week-5-checklist)  |
 | 6    | Have quadrant 4 DONE by end of week 6 |  |  | [Week 6 Checklist](#week-6-checklist) |
-| 7    | Have Robot Ready | Robot | ENGR101 test |  |
+| 7    | Have Robot Ready | Robot | ENGR101 test | [Week 7 Checklist](#week-7-checklist) |
 | 8    | Work on finishing off Report |  |  |  |
 | 9    | Finish Report | Final Report |  |  |
 
@@ -69,11 +69,14 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 
 
 ###Week 6 Checklist
-- [ ] Grace: Help with anything getting behind/software for quadrant 4.
-- [ ] Chris & Michael: Work on quadrant 4 code, with IR sensors.
-- [ ] Aaron & Mayunk: Have the sensors placed ready for software to code.
+- [x] Grace: Help with anything getting behind/software for quadrant 4.
+- [x] Chris & Michael: Work on quadrant 4 code, with IR sensors.
+- [x] Aaron & Mayunk: Have the sensors placed ready for software to code.
 
-###Week 7 Checklist to come
+**This week we were well organised, we managed to get the robot moving through all quadrants. Hardware changed design so it would fit through the walled maze better ready for the final day. 
+
+###Week 7 Checklist
+- [ ] Did our AVC complete the maze?
 
 
 
