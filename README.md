@@ -76,7 +76,9 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 *This week we were well organised, we managed to get the robot moving through all quadrants. Hardware changed design so it would fit through the walled maze better ready for the final day.*
 
 ###Week 7 Checklist
-- [ ] Did our AVC complete the maze?
+- [x] Did our AVC complete the maze?
+- 
+** 100% through the maze, also on the aesthetic part of the mark we manage to get -2/0.  
 
 
 
