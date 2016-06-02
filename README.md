@@ -78,7 +78,7 @@ A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 ###Week 7 Checklist
 - [x] Did our AVC complete the maze?
 
-* 100% through the maze, also on the aesthetic part of the mark we manage to get -2/0.* 
+*100% through the maze, also on the aesthetic part of the mark we manage to get -2/0.* 
 
 
 
