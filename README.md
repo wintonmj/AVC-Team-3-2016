@@ -6,7 +6,8 @@
  * Robot: Week 7 (Mon 30th May)
  * Final Report: Week 9 (Mon 13th June)
 
-A picture of the maze for the challenge is [here](/MazeFinal.JPG) 
+A picture of the maze for the challenge is [here](/MazeFinal.JPG)
+Our final design of the Robot is [here](13351095_1130888853619254_1727362256_o.jpg)
 
 ###AVC Project Plan
  
