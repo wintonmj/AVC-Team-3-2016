@@ -8,7 +8,6 @@
 
 A picture of the maze for the challenge is [here](/MazeFinal.JPG)
 
-Our final design of our robot can be seen [here](/13351095_1130888853619254_1727362256_o.jpg)
 
 ###AVC Project Plan
  
